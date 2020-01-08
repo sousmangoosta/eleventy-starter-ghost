@@ -22,6 +22,8 @@ const stripDomain = url => {
 };
 
 module.exports = function(config) {
+  // Truncate words
+  config.addNunjucksFilter('words', function(str, count) { return str.split(' ').slice(0,count).join(' '); });
   // Minify HTML
   config.addTransform("htmlmin", htmlMinTransform);
 

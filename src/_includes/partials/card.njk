@@ -12,7 +12,7 @@
             </h2>
         </header>
         <div class="post-card-excerpt">
-            <p>{{ post.excerpt }}</p>
+            <p>{% if post.excerpt|wordcount > 20 %}{{ post.excerpt|words(20) }}...{% else %}{{ post.excerpt }}{% endif %}</p>
         </div>
         <footer class="post-card-footer">
             <div class="post-card-footer-left">
