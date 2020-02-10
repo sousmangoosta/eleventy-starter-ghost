@@ -30,6 +30,11 @@ module.exports = function(config) {
   // Assist RSS feed template
   config.addPlugin(pluginRSS);
 
+  config.addShortcode("generationDate",
+      function() {
+          return new Date().toISOString();
+      });
+
   // Apply performance attributes to images
   config.addPlugin(lazyImages, {
     cacheFile: ""
@@ -104,7 +109,11 @@ module.exports = function(config) {
       post.tags.map(tag => (tag.url = stripDomain(tag.url)));
 
       // Convert publish date into a Date object
-      post.published_at = new Date(post.published_at);
+      const options = { year: 'numeric', month: 'numeric',
+        day: 'numeric'};
+      post.rssDate = post.published_at;
+      post.published_at = new Date(post.published_at)
+                                  .toLocaleString('fr-FR', options);
     });
 
     // Bring featured post to the top of the list

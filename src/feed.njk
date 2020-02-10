@@ -11,7 +11,7 @@ metadata:
   <subtitle>{{ site.description }}</subtitle>
   <link href="{{ site.url + page.url }}" rel="self"/>
   <link href="{{ site.url }}"/>
-  <updated>{{ collections.posts | rssLastUpdatedDate }}</updated>
+  <updated>{% generationDate %}</updated>
   <id>{{ site.url }}</id>
   <author>
     <name>{{ collections.authors[0].name }}</name>
@@ -20,7 +20,7 @@ metadata:
   <entry>
     <title>{{ post.title }}</title>
     <link href="{{ site.url + post.url }}"/>
-    <updated>{{ post.date | rssDate }}</updated>
+    <updated>{{ post.rssDate }}</updated>
     <id>{{ absolutePostUrl }}</id>
     <content type="text">{% if post.excerpt|wordcount > 20 %}{{ post.excerpt|words(20) }}...{% else %}{{ post.excerpt }}{% endif %}</content>
   </entry>

@@ -23,7 +23,11 @@
                         alt="{{ post.primary_author.name }}"
                     />
                 </div>
-                <span>{{ post.primary_author.name }}</span>
+                <div class="post-card-published-date">
+                <!--<span>{{ post.primary_author.name }}</span>
+                <br>-->
+                <span>{{ post.published_at }}</span>
+                </div>
             </div>
             <div class="post-card-footer-right">
                 <div>{{ post.html | safe | getReadingTime }} min read</div>
